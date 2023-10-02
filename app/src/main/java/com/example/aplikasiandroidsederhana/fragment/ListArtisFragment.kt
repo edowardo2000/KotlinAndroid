@@ -13,7 +13,7 @@ import com.example.aplikasiandroidsederhana.model.Article
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
+private const val ARG_PARAM1 = "ARTICLE"
 private const val ARG_PARAM2 = "param2"
 
 /**
@@ -109,9 +109,25 @@ class ListArtisFragment : Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(context)
 
         recyclerView.adapter = ArticleAdapter(articles) { article ->
-            val intent = Intent(context, DetailActivity::class.java)
-            intent.putExtra("ARTICLE", article)
-            startActivity(intent)
+//            val intent = Intent(context, DetailActivity::class.java)
+//            intent.putExtra("ARTICLE", article)
+//            startActivity(intent)
+
+            val orientation = resources.configuration.orientation
+            if(orientation == android.content.res.Configuration.ORIENTATION_LANDSCAPE) {
+                parentFragmentManager.beginTransaction()
+                    .replace(R.id.sideDetail, ListDetailFragment.newInstance(article, ""))
+                    .commit()
+            }else {
+                parentFragmentManager.beginTransaction()
+                    .replace(R.id.frmFragment, ListDetailFragment.newInstance(article,""))
+                    .addToBackStack(null)
+                    .commit()
+            }
+
+
+
+
         }
 
 

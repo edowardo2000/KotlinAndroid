@@ -14,26 +14,22 @@ class DetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
 
-        val article = intent.getParcelableExtra<Article>("ARTICLE")
-
-        if (article != null) {
-            supportActionBar?.title = article.title
-            findViewById<ImageView>(R.id.articleDetailImage).setImageResource(article.imageResourceId)
-            findViewById<TextView>(R.id.articleDetailTitle).text = article.title
-            findViewById<TextView>(R.id.articleDetailOverview).text = article.overview
-            findViewById<TextView>(R.id.articleDetailDescription).text = article.description
-
-        }
+//        val article = intent.getParcelableExtra<Article>("ARTICLE")
+//
+//        if (article != null) {
+//            supportActionBar?.title = article.title
+//
+//
+//        }
 
         val shareButton = findViewById<Button>(R.id.btnShare)
         shareButton.setOnClickListener {
-            if (article != null) {
-                shareArticle(article)
-            }
+//            if (article != null) {
+//                shareArticle(article)
+//            }
         }
 
     }
-
 
     private fun shareArticle(article: Article) {
         val shareIntent = Intent().apply {
